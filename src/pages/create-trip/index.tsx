@@ -4,7 +4,7 @@ import { InviteGuestsModal } from "./_components/invite-guests-modal";
 import { ConfirmTripModal } from "./_components/confirm-trip-modal";
 import { DestinationAndDateStep } from "./_components/steps/_components/destination-and-date-step";
 import { InviteGuestsStep } from "./_components/steps/_components/invite-guests-step";
-import { Terms } from "./_components/terms";
+import { Terms } from "./_components/terms-footer";
 
 export function CreateTripPage() {
   const navigate = useNavigate();

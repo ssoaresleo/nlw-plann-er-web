@@ -55,7 +55,9 @@ export function ConfirmTripModal({
               className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
             />
           </div>
-          <Button type="submit">Confirmar criação da viagem</Button>
+          <Button type="submit" size="full">
+            Confirmar criação da viagem
+          </Button>
         </form>
       </div>
     </div>

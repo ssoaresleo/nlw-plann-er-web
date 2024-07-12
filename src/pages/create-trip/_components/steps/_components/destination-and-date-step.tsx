@@ -7,26 +7,32 @@ import { format } from "date-fns";
 
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
+  eventStartAndEndDates: DateRange | undefined;
   handleOpenGuestsInput: () => void;
+  setDestination: (destination: string) => void;
+  setEventStartAndEndDates: (dates: DateRange | undefined) => void;
 }
 
 export function DestinationAndDateStep({
   isGuestsInputOpen,
   handleOpenGuestsInput,
+  setDestination,
+  setEventStartAndEndDates,
+  eventStartAndEndDates,
 }: DestinationAndDateStepProps) {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-
-  const [eventStartAndEndDates, setEventStartAndEndDates] = useState<
-    DateRange | undefined
-  >();
 
   function handleOpenDatePicker() {
     setIsDatePickerOpen(!isDatePickerOpen);
   }
 
   const displayedDate =
-    eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to
-      ? format(eventStartAndEndDates.from, " d' de 'LLL").concat(' até').concat(format(eventStartAndEndDates.to, " d' de 'LLL" ))
+    eventStartAndEndDates &&
+    eventStartAndEndDates.from &&
+    eventStartAndEndDates.to
+      ? format(eventStartAndEndDates.from, " d' de 'LLL")
+          .concat(" até")
+          .concat(format(eventStartAndEndDates.to, " d' de 'LLL"))
       : null;
 
   return (
@@ -38,6 +44,7 @@ export function DestinationAndDateStep({
           type="text"
           placeholder="Para onde você vai?"
           className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+          onChange={(event) => setDestination(event.target.value)}
           disabled={isGuestsInputOpen}
         />
       </div>

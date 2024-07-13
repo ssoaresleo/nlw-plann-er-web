@@ -1,12 +1,16 @@
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { CreateActivityModal } from "./_components/create-activity-modal";
 import { ImportantsLinks } from "./_components/importants-links";
 import { Guests } from "./_components/guests";
 import { Activities } from "./_components/activities";
 import { HeaderDetailsTrip } from "./_components/header-details-trip";
+import { api } from "../../lib/axios";
+import { useParams } from "react-router-dom";
 
 export function TripDetails() {
+  const { tripId } = useParams();
+
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
     useState(false);
 
@@ -14,7 +18,20 @@ export function TripDetails() {
     setIsCreateActivityModalOpen(!isCreateActivityModalOpen);
   }
 
-  function createActivity() {}
+  async function createActivity(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const title = data.get("title")?.toString();
+    const occurs_at = data.get("occurs_at")?.toString();
+
+    await api.post(`/trips/${tripId}/activities`, {
+      title,
+      occurs_at,
+    });
+
+    handleOpenCreateActivityModal();
+  }
 
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">

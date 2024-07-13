@@ -5,9 +5,11 @@ import { DestinationAndDateStep } from "./_components/steps/_components/destinat
 import { InviteGuestsStep } from "./_components/steps/_components/invite-guests-step";
 import { Terms } from "./_components/terms-footer";
 import { DateRange } from "react-day-picker";
+import { api } from "../../lib/axios";
+import { useNavigate } from "react-router-dom";
 
 export function CreateTripPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
@@ -53,16 +55,32 @@ export function CreateTripPage() {
     setEmailsToInvite(emailsToInvite.filter((e) => e !== email));
   }
 
-  function createTrip(event: FormEvent<HTMLFormElement>) {
+  async function createTrip(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     console.log(destination);
     console.log(ownerName);
     console.log(ownerEmail);
     console.log(eventStartAndEndDates);
-    console.log(emailsToInvite)
+    console.log(emailsToInvite);
 
-    // navigate("/trip/123");
+    if (!eventStartAndEndDates?.from || !eventStartAndEndDates.to) return;
+    if (!destination) return;
+    if (!ownerName) return;
+    if (!ownerEmail) return;
+
+    const response = await api.post("/trips", {
+      destination: destination,
+      starts_at: eventStartAndEndDates?.from,
+      ends_at: eventStartAndEndDates?.to,
+      owner_name: ownerName,
+      owner_email: ownerEmail,
+      emails_to_invite: emailsToInvite,
+    });
+
+    const { tripId } = response.data;
+
+    navigate(`trip/${tripId}`);
   }
 
   return (

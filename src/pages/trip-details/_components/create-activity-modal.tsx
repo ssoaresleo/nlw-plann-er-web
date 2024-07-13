@@ -1,9 +1,10 @@
 import { Calendar, TagIcon, X } from "lucide-react";
 import { Button } from "../../../components/button";
+import { FormEvent } from "react";
 
 interface CreateActivityModalProps {
   handleOpenCreateActivityModal: () => void;
-  createActivity: () => void;
+  createActivity: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 export function CreateActivityModal({

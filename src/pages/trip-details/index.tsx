@@ -8,6 +8,7 @@ import { HeaderDetailsTrip } from "./_components/header-details-trip";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import { CreateLinkModal } from "./_components/create-link-modal";
+import { Button } from "../../components/button";
 
 export function TripDetails() {
   const { tripId } = useParams();
@@ -63,13 +64,10 @@ export function TripDetails() {
         <div className="flex-1 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold">Atividades</h2>
-            <button
-              onClick={handleOpenCreateActivityModal}
-              className="bg-lime-300 flex items-center gap-2 hover:bg-lime-400 transition-all text-lime-950 rounded-lg px-5 py-2 font-medium"
-            >
+            <Button onClick={handleOpenCreateActivityModal}>
               <Plus className="size-5" />
               Cadastrar atividade
-            </button>
+            </Button>
           </div>
 
           <Activities />
@@ -86,19 +84,19 @@ export function TripDetails() {
         </div>
       </main>
 
-      {/* Modal de criação de uma atividade */}
       {isCreateActivityModalOpen && (
         <CreateActivityModal
           createActivity={createActivity}
-          handleOpenCreateActivityModal={handleOpenCreateActivityModal}
+          handleOpen={handleOpenCreateActivityModal}
+          isOpen={isCreateActivityModalOpen}
         />
       )}
 
-      {/* Modal de criação de um link */}
       {isCreateLinkModalOpen && (
         <CreateLinkModal
           createLink={createLink}
-          handleOpenCreateLinkModal={handleOpentCreateLinkModal}
+          handleOpen={handleOpentCreateLinkModal}
+          isOpen={isCreateLinkModalOpen}
         />
       )}
     </div>

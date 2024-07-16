@@ -8,6 +8,7 @@ import { format } from "date-fns";
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
   eventStartAndEndDates: DateRange | undefined;
+  destination: string;
   handleOpenGuestsInput: () => void;
   setDestination: (destination: string) => void;
   setEventStartAndEndDates: (dates: DateRange | undefined) => void;
@@ -19,6 +20,7 @@ export function DestinationAndDateStep({
   setDestination,
   setEventStartAndEndDates,
   eventStartAndEndDates,
+  destination,
 }: DestinationAndDateStepProps) {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
@@ -34,6 +36,9 @@ export function DestinationAndDateStep({
           .concat(" até")
           .concat(format(eventStartAndEndDates.to, " d' de 'LLL"))
       : null;
+
+  const isDestinationAndDate =
+    destination.trim() !== "" && eventStartAndEndDates !== undefined;
 
   return (
     <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
@@ -88,7 +93,10 @@ export function DestinationAndDateStep({
           <Settings2 className="size-5" />
         </Button>
       ) : (
-        <Button onClick={handleOpenGuestsInput}>
+        <Button
+          onClick={handleOpenGuestsInput}
+          disabled={!isDestinationAndDate}
+        >
           Continuar
           <ArrowRight className="size-5" />
         </Button>

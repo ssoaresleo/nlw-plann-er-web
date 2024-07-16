@@ -11,6 +11,7 @@ export function CreateTripPage() {
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
   const [isConfirmTripOpen, setIsConfirmTripOpen] = useState(false);
+  
   const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
 
   const [destination, setDestination] = useState("");
@@ -55,12 +56,6 @@ export function CreateTripPage() {
   async function createTrip(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log(destination);
-    console.log(ownerName);
-    console.log(ownerEmail);
-    console.log(eventStartAndEndDates);
-    console.log(emailsToInvite);
-
     if (!eventStartAndEndDates?.from || !eventStartAndEndDates.to) return;
     if (!destination) return;
     if (!ownerName) return;
@@ -87,16 +82,17 @@ export function CreateTripPage() {
         </div>
 
         <div className="space-y-4">
-          {/* input de destino e data Passo 1 */}
+        
           <DestinationAndDateStep
             isGuestsInputOpen={isGuestsInputOpen}
             handleOpenGuestsInput={handleOpenGuestsInput}
             setDestination={setDestination}
+            destination={destination}
             setEventStartAndEndDates={setEventStartAndEndDates}
             eventStartAndEndDates={eventStartAndEndDates}
           />
 
-          {/* input de adicionar participants Passo 2 */}
+         
           {isGuestsInputOpen && (
             <InviteGuestsStep
               emailsToInvite={emailsToInvite}
@@ -109,7 +105,7 @@ export function CreateTripPage() {
         <Terms />
       </div>
 
-      {/* modal para adicionar participantes */}
+     
       {isGuestsModalOpen && (
         <InviteGuestsModal
           handleOpenGuestsModal={handleOpenGuestsModal}
@@ -119,7 +115,7 @@ export function CreateTripPage() {
         />
       )}
 
-      {/* modal para confirmar a criação da viagem */}
+    
       {isConfirmTripOpen && (
         <ConfirmTripModal
           handleConfirmTripOpen={handleConfirmTripOpen}

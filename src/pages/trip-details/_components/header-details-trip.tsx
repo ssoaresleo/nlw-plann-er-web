@@ -1,26 +1,17 @@
 import { MapPin, Calendar, Settings2 } from "lucide-react";
 import { Button } from "../../../components/button";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { api } from "../../../lib/axios";
 import { format } from "date-fns";
-
-interface Trip {
-  id: string;
-  destination: string;
-  starts_at: string;
-  ends_at: string;
-  is_confirmed: boolean;
-}
+import { useQuery } from "@tanstack/react-query";
+import { getTripDetails } from "../../../_api/get-trip-details";
 
 export function HeaderDetailsTrip() {
   const { tripId } = useParams();
 
-  const [trip, setTrip] = useState<Trip | undefined>(undefined);
-
-  useEffect(() => {
-    api.get(`/trips/${tripId}`).then((response) => setTrip(response.data.trip));
-  }, [tripId]);
+  const { data: trip } = useQuery({
+    queryKey: ["trip-details", tripId],
+    queryFn: () => getTripDetails({ tripId: tripId || "" }),
+  });
 
   const displayedDate = trip
     ? format(trip.starts_at, " d' de 'LLL")

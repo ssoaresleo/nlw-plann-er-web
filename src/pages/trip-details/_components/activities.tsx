@@ -3,8 +3,8 @@ import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { format, setDefaultOptions } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { getActivities } from "../../../_api/get-activitiest";
 import { useQuery } from "@tanstack/react-query";
+import { getActivities } from "../../../_api/get-activitiest";
 
 setDefaultOptions({ locale: ptBR });
 

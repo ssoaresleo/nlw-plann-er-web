@@ -6,11 +6,8 @@ import { InviteGuestsStep } from "./_components/steps/_components/invite-guests-
 import { Terms } from "./_components/terms-footer";
 import { DateRange } from "react-day-picker";
 import { api } from "../../lib/axios";
-import { useNavigate } from "react-router-dom";
 
 export function CreateTripPage() {
-  const navigate = useNavigate();
-
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
   const [isConfirmTripOpen, setIsConfirmTripOpen] = useState(false);
@@ -69,7 +66,7 @@ export function CreateTripPage() {
     if (!ownerName) return;
     if (!ownerEmail) return;
 
-    const response = await api.post("/trips", {
+    await api.post("/trips", {
       destination: destination,
       starts_at: eventStartAndEndDates?.from,
       ends_at: eventStartAndEndDates?.to,
@@ -77,10 +74,6 @@ export function CreateTripPage() {
       owner_email: ownerEmail,
       emails_to_invite: emailsToInvite,
     });
-
-    const { tripId } = response.data;
-
-    navigate(`trip/${tripId}`);
   }
 
   return (

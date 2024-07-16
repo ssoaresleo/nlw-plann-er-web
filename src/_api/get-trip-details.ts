@@ -1,6 +1,6 @@
 import { api } from "../lib/axios";
 
-interface Trip {
+export interface Trip {
   id: string;
   destination: string;
   starts_at: string;

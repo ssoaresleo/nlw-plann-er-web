@@ -7,12 +7,19 @@ import { Activities } from "./_components/activities";
 import { HeaderDetailsTrip } from "./_components/header-details-trip";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
+import { CreateLinkModal } from "./_components/create-link-modal";
 
 export function TripDetails() {
   const { tripId } = useParams();
 
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
     useState(false);
+
+  const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
+
+  function handleOpentCreateLinkModal() {
+    setIsCreateLinkModalOpen(!isCreateLinkModalOpen);
+  }
 
   function handleOpenCreateActivityModal() {
     setIsCreateActivityModalOpen(!isCreateActivityModalOpen);
@@ -31,6 +38,21 @@ export function TripDetails() {
     });
 
     handleOpenCreateActivityModal();
+  }
+
+  async function createLink(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const title = data.get("title")?.toString();
+    const url = data.get("url")?.toString();
+
+    await api.post(`/trips/${tripId}/links`, {
+      title,
+      url,
+    });
+
+    handleOpentCreateLinkModal();
   }
 
   return (
@@ -54,7 +76,9 @@ export function TripDetails() {
         </div>
 
         <div className="w-80 space-y-6">
-          <ImportantsLinks />
+          <ImportantsLinks
+            handleOpentCreateLinkModal={handleOpentCreateLinkModal}
+          />
 
           <div className="w-full h-px bg-zinc-800"></div>
 
@@ -67,6 +91,14 @@ export function TripDetails() {
         <CreateActivityModal
           createActivity={createActivity}
           handleOpenCreateActivityModal={handleOpenCreateActivityModal}
+        />
+      )}
+
+      {/* Modal de criação de um link */}
+      {isCreateLinkModalOpen && (
+        <CreateLinkModal
+          createLink={createLink}
+          handleOpenCreateLinkModal={handleOpentCreateLinkModal}
         />
       )}
     </div>

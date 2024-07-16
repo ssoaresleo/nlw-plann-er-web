@@ -1,28 +1,17 @@
 import { CheckCircle, CircleDashed, UserCog } from "lucide-react";
 import { Button } from "../../../components/button";
-import { useEffect, useState } from "react";
-import { api } from "../../../lib/axios";
-import { useParams } from "react-router-dom";
 
-interface ParticipantProps {
-  id: string;
-  name: string | null;
-  email: string;
-  is_confirmed: boolean;
-}
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getGuests } from "../../../_api/get-guests";
 
 export function Guests() {
   const { tripId } = useParams();
 
-  const [participants, setParticipants] = useState<ParticipantProps[]>([]);
-
-  console.log(participants);
-
-  useEffect(() => {
-    api
-      .get(`/trips/${tripId}/participants`)
-      .then((response) => setParticipants(response.data.participants));
-  }, [tripId]);
+  const { data: participants } = useQuery({
+    queryKey: ["participants", tripId],
+    queryFn: () => getGuests({ tripId: tripId || "" }),
+  });
 
   return (
     <div className="space-y-6">

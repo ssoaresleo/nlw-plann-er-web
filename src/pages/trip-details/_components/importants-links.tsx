@@ -1,14 +1,8 @@
 import { Link2, Plus } from "lucide-react";
 import { Button } from "../../../components/button";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../../../lib/axios";
-
-interface Link {
-  id: string;
-  title: string;
-  url: string;
-}
+import { useQuery } from "@tanstack/react-query";
+import { getImportantsLinks } from "../../../_api/get-importants-links";
 
 interface ImportantsLinksProps {
   handleOpentCreateLinkModal: () => void;
@@ -19,13 +13,10 @@ export function ImportantsLinks({
 }: ImportantsLinksProps) {
   const { tripId } = useParams();
 
-  const [links, setLinks] = useState<Link[] | undefined>(undefined);
-
-  useEffect(() => {
-    api
-      .get(`/trips/${tripId}/links`)
-      .then((response) => setLinks(response.data.links));
-  }, [tripId]);
+  const { data: links } = useQuery({
+    queryKey: ["important-links", tripId],
+    queryFn: () => getImportantsLinks({ tripId: tripId || "" }),
+  });
 
   return (
     <div className="space-y-6">

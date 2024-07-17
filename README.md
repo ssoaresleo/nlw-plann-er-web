@@ -110,10 +110,16 @@ In this step, you can enter multiple email addresses of people you want to invit
 
 ### Step 3
 
-Confirm the trip details by providing the owner's name and email address for final confirmation.
+Confirm the trip details by providing the owner's name and email address for final confirmation. The owner will receive an email to confirm the creation of the trip. After confirmation, they will be redirected to a screen displaying trip details. Confirmation emails will also be sent to participants, informing them about the trip.
 
 ![trip-step-3](https://github.com/user-attachments/assets/516469e9-c808-4e85-87dc-a7f8de39212f)
 
+**Note:** Confirmation emails for participants will appear in the terminal of the backend.
 
 
+## Trip Details
+
+Here is an example of the Trip Details screen, where users can view all the information related to a specific trip. This screen typically includes details such as destination, dates, invited guests, activities planned, and important links.
+
+![trip-details](https://github.com/user-attachments/assets/98827e05-fb3e-4181-8e56-798c452166b0)
 

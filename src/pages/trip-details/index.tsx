@@ -1,11 +1,10 @@
 import { Plus } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { CreateActivityModal } from "./_components/create-activity-modal";
 import { ImportantsLinks } from "./_components/importants-links";
 import { Guests } from "./_components/guests";
 import { Activities } from "./_components/activities";
 import { HeaderDetailsTrip } from "./_components/header-details-trip";
-import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import { CreateLinkModal } from "./_components/create-link-modal";
 import { Button } from "../../components/button";
@@ -24,36 +23,6 @@ export function TripDetails() {
 
   function handleOpenCreateActivityModal() {
     setIsCreateActivityModalOpen(!isCreateActivityModalOpen);
-  }
-
-  async function createActivity(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    const title = data.get("title")?.toString();
-    const occurs_at = data.get("occurs_at")?.toString();
-
-    await api.post(`/trips/${tripId}/activities`, {
-      title,
-      occurs_at,
-    });
-
-    handleOpenCreateActivityModal();
-  }
-
-  async function createLink(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    const title = data.get("title")?.toString();
-    const url = data.get("url")?.toString();
-
-    await api.post(`/trips/${tripId}/links`, {
-      title,
-      url,
-    });
-
-    handleOpentCreateLinkModal();
   }
 
   return (
@@ -84,17 +53,17 @@ export function TripDetails() {
         </div>
       </main>
 
-      {isCreateActivityModalOpen && (
+      {tripId && isCreateActivityModalOpen && (
         <CreateActivityModal
-          createActivity={createActivity}
+          tripId={tripId}
           handleOpen={handleOpenCreateActivityModal}
           isOpen={isCreateActivityModalOpen}
         />
       )}
 
-      {isCreateLinkModalOpen && (
+      {tripId && isCreateLinkModalOpen && (
         <CreateLinkModal
-          createLink={createLink}
+          tripId={tripId}
           handleOpen={handleOpentCreateLinkModal}
           isOpen={isCreateLinkModalOpen}
         />

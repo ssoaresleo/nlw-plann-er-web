@@ -138,3 +138,11 @@ Here is an example of the Participant Confirmation screen. When invited to join 
 This section demonstrates how participants interact with the invitation confirmation process in your application.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

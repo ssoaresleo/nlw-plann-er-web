@@ -102,11 +102,15 @@ To create a trip, the first step is to choose the destination, start date, and e
 
 ![trip-step-1](https://github.com/user-attachments/assets/31047505-f9e1-4339-a01b-3830746f1f3c)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 #### Step 2
 
 In this step, you can enter multiple email addresses of people you want to invite to join the trip. They will receive invitations to collaborate and plan together.
 
 ![trip-step-2](https://github.com/user-attachments/assets/b0e9cc78-e3aa-4f67-a382-8a2b85403606)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Step 3
 
@@ -116,6 +120,8 @@ Confirm the trip details by providing the owner's name and email address for fin
 
 **Note:** Confirmation emails for participants will appear in the terminal of the backend.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Trip Details
 
@@ -123,3 +129,12 @@ Here is an example of the Trip Details screen, where users can view all the info
 
 ![trip-details](https://github.com/user-attachments/assets/98827e05-fb3e-4181-8e56-798c452166b0)
 
+## Participant Confirmation
+
+Here is an example of the Participant Confirmation screen. When invited to join a trip, participants receive an email with a link to confirm their participation.
+
+![trip-confirmation-participant](https://github.com/user-attachments/assets/0e260cdd-b843-45f5-93db-90e1b9476c38)
+
+This section demonstrates how participants interact with the invitation confirmation process in your application.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

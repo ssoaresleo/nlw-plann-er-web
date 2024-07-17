@@ -95,3 +95,17 @@ Assuming you have already cloned the backend repository, follow these steps to s
 Here are some examples of how to use the application after configuration
 
 ### Creating a Trip
+
+#### Step 1
+
+To create a trip, the first step is to choose the destination, start date, and end date of the trip. This information helps in organizing and planning the itinerary effectively.
+
+![trip-step-1](https://github.com/user-attachments/assets/31047505-f9e1-4339-a01b-3830746f1f3c)
+
+#### Step 2
+
+In this step, you can enter multiple email addresses of people you want to invite to join the trip. They will receive invitations to collaborate and plan together.
+
+![trip-step-2](https://github.com/user-attachments/assets/b0e9cc78-e3aa-4f67-a382-8a2b85403606)
+
+

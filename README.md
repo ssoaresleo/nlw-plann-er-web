@@ -108,4 +108,12 @@ In this step, you can enter multiple email addresses of people you want to invit
 
 ![trip-step-2](https://github.com/user-attachments/assets/b0e9cc78-e3aa-4f67-a382-8a2b85403606)
 
+### Step 3
+
+Confirm the trip details by providing the owner's name and email address for final confirmation.
+
+![trip-step-3](https://github.com/user-attachments/assets/516469e9-c808-4e85-87dc-a7f8de39212f)
+
+
+
 

@@ -6,7 +6,7 @@
 
 ## Topics
 
-- [Stacks](#Stacks)
+- [Stacks](#stacks)
 - [About](#about)
 - [How to Use](#how-to-use)
   - [Prerequisites](#prerequisites)
@@ -20,7 +20,7 @@
     A desktop application for creating travel plans for work or vacations with friends, registering activities, adding important links, and inviting new participants. This project was developed during Rocketseat's NLW event in the React track.
 </p>
 
-## 🚀 Stacks
+## Stacks
 
 - React
 - TypeScript

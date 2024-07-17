@@ -10,11 +10,11 @@
 
 - [Stacks](#stacks)
 - [About](#about)
-- [How to Use](#how-to-use)
+- [How to Use](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Usage](#usage)
-- [Contributing](#contributing)
+- [Licence](#licence)
 
 ## About
 

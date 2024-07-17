@@ -6,7 +6,7 @@
 
 ## Topics
 
-- [Technologies](#technologies-used)
+- [Stacks](#Stacks)
 - [About](#about)
 - [How to Use](#how-to-use)
   - [Prerequisites](#prerequisites)

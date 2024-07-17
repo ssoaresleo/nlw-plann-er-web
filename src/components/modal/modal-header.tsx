@@ -8,7 +8,7 @@ interface ModalHeaderProps {
 
 export function ModalHeader({ children, setIsOpen }: ModalHeaderProps) {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-start justify-between">
       <div className="flex flex-col items-start justify-start space-y-2">
         {children}
       </div>

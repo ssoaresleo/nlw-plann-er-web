@@ -8,6 +8,7 @@ import { HeaderDetailsTrip } from "./_components/header-details-trip";
 import { useParams } from "react-router-dom";
 import { CreateLinkModal } from "./_components/create-link-modal";
 import { Button } from "../../components/button";
+import { UpdateTripModal } from "./_components/update-trip-modal";
 
 export function TripDetails() {
   const { tripId } = useParams();
@@ -17,6 +18,8 @@ export function TripDetails() {
 
   const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
 
+  const [isUpdateTripModalOpen, setIsUpdateTripModalOpen] = useState(false);
+
   function handleOpentCreateLinkModal() {
     setIsCreateLinkModalOpen(!isCreateLinkModalOpen);
   }
@@ -25,9 +28,13 @@ export function TripDetails() {
     setIsCreateActivityModalOpen(!isCreateActivityModalOpen);
   }
 
+  function handleUpdateTripModal() {
+    setIsUpdateTripModalOpen(!isUpdateTripModalOpen);
+  }
+
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-      <HeaderDetailsTrip />
+      <HeaderDetailsTrip handleUpdateTripModal={handleUpdateTripModal} />
 
       <main className="flex gap-16 px-4">
         <div className="flex-1 space-y-6">
@@ -66,6 +73,14 @@ export function TripDetails() {
           tripId={tripId}
           handleOpen={handleOpentCreateLinkModal}
           isOpen={isCreateLinkModalOpen}
+        />
+      )}
+
+      {tripId && isUpdateTripModalOpen && (
+        <UpdateTripModal
+          handleOpen={handleUpdateTripModal}
+          isOpen={isUpdateTripModalOpen}
+          tripId={tripId}
         />
       )}
     </div>

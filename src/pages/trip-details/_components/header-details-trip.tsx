@@ -5,7 +5,11 @@ import { format } from "date-fns";
 import { useQuery } from "@tanstack/react-query";
 import { getTripDetails } from "../../../_api/get-trip-details";
 
-export function HeaderDetailsTrip() {
+export function HeaderDetailsTrip({
+  handleUpdateTripModal,
+}: {
+  handleUpdateTripModal: () => void;
+}) {
   const { tripId } = useParams();
 
   const { data: trip } = useQuery({
@@ -34,7 +38,7 @@ export function HeaderDetailsTrip() {
 
         <div className="w-px h-6 bg-zinc-800" />
 
-        <Button variant="secondary">
+        <Button variant="secondary" onClick={handleUpdateTripModal}>
           Alterar local/data
           <Settings2 className="size-5" />
         </Button>

@@ -143,6 +143,12 @@ This section demonstrates how participants interact with the invitation confirma
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Developers
+
+[<img src="https://avatars.githubusercontent.com/u/100442262?v=4" width=80> <br><sub>Leonardo Henrique</sub>](https://github.com/ssoaresleo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

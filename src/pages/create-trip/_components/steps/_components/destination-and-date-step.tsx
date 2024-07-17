@@ -41,8 +41,8 @@ export function DestinationAndDateStep({
     destination.trim() !== "" && eventStartAndEndDates !== undefined;
 
   return (
-    <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
-      <div className="flex items-center gap-2 flex-1">
+    <div className="lg:h-16 h-auto lg:py-0 py-4 bg-zinc-900 px-4 rounded-xl flex lg:flex-row flex-col lg:items-center items-start shadow-shape gap-3">
+      <div className="flex items-center gap-2 flex-1 w-full lg:py-0 py-4">
         <MapPin className="size-5 text-zinc-400" />
 
         <input
@@ -56,7 +56,7 @@ export function DestinationAndDateStep({
 
       <button
         onClick={handleOpenDatePicker}
-        className="flex items-center gap-2 text-left w-[240px]"
+        className="flex items-center gap-2 text-left w-[240px] lg:py-0 py-4"
         disabled={isGuestsInputOpen}
       >
         <Calendar className="size-5 text-zinc-400" />
@@ -85,10 +85,14 @@ export function DestinationAndDateStep({
         </div>
       )}
 
-      <div className="w-px h-6 bg-zinc-800" />
+      <div className="lg:w-px lg:h-6 h-px w-6 bg-zinc-800 lg:mx-0 mx-auto" />
 
       {isGuestsInputOpen ? (
-        <Button variant="secondary" onClick={handleOpenGuestsInput}>
+        <Button
+          variant="secondary"
+          onClick={handleOpenGuestsInput}
+          size="responsive"
+        >
           Alterar local/data
           <Settings2 className="size-5" />
         </Button>

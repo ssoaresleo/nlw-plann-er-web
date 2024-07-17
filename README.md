@@ -14,7 +14,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Usage](#usage)
-- [Licence](#licence)
+- [Licence](#license)
 
 ## About
 

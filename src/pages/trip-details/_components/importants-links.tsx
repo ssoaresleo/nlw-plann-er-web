@@ -23,25 +23,29 @@ export function ImportantsLinks({
       <h2 className="font-semibold text-xl">Links importantes</h2>
 
       <div className="space-y-5">
-        {links?.map((link) => (
-          <div
-            className="flex items-center justify-between gap-4"
-            key={link.id}
-          >
-            <div className="space-y-1.5 flex-1">
-              <span className="block font-medium text-zinc-100">
-                {link.title}
-              </span>
-              <a
-                href={link.url}
-                className="block text-xs text-zinc-400 hover:text-zinc-200 truncate"
-              >
-                {link.url}
-              </a>
+        {!links?.length && (
+          <p className="block text-sm text-zinc-400">Não a nenhum link registrado nessa viagem.</p>
+        )}
+        {links &&
+          links.map((link) => (
+            <div
+              className="flex items-center justify-between gap-4"
+              key={link.id}
+            >
+              <div className="space-y-1.5 flex-1">
+                <span className="block font-medium text-zinc-100">
+                  {link.title}
+                </span>
+                <a
+                  href={link.url}
+                  className="block text-xs text-zinc-400 hover:text-zinc-200 truncate"
+                >
+                  {link.url}
+                </a>
+              </div>
+              <Link2 className="text-zinc-400" />
             </div>
-            <Link2 className="text-zinc-400" />
-          </div>
-        ))}
+          ))}
       </div>
 
       <Button

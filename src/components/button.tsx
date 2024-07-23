@@ -12,7 +12,7 @@ const buttonVariants = tv({
     size: {
       default: "py-2",
       full: "w-full h-11",
-      responsive: "lg:w-auto w-full",
+      responsive: "md:w-auto w-full",
     },
   },
   defaultVariants: {
